@@ -1,7 +1,4 @@
-resolvers += "Typesafe repository" at "http://repo.typesafe.com/typesafe/releases/"
+addSbtPlugin("com.eed3si9n" % "sbt-assembly" % "0.12.0")
 
-// The Play plugin
-addSbtPlugin("com.typesafe.play" % "sbt-plugin" % "2.3.8")
-
-addSbtPlugin("com.typesafe.sbt" % "sbt-native-packager" % "0.7.4")
+addSbtPlugin("com.typesafe.sbt" % "sbt-native-packager" % "1.0.0-M5")
 
