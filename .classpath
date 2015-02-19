@@ -1,8 +1,10 @@
 <classpath>
   <classpathentry kind="src" path="src/main/scala" output="target/scala-2.11/classes"/>
   <classpathentry kind="src" path="src/main/java" output="target/scala-2.11/classes"/>
+  <classpathentry kind="src" path="src/main/resources" output="target/scala-2.11/classes"/>
   <classpathentry kind="src" path="src/test/scala" output="target/scala-2.11/test-classes"/>
   <classpathentry kind="src" path="src/test/java" output="target/scala-2.11/test-classes"/>
+  <classpathentry kind="src" path="src/test/resources" output="target/scala-2.11/test-classes"/>
   <classpathentry sourcepath="/home/gunther/.ivy2/cache/org.scala-lang/scala-library/srcs/scala-library-2.11.5-sources.jar" kind="lib" path="/home/gunther/.ivy2/cache/org.scala-lang/scala-library/jars/scala-library-2.11.5.jar"/>
   <classpathentry sourcepath="/home/gunther/.ivy2/cache/org.scala-lang.modules/scala-parser-combinators_2.11/srcs/scala-parser-combinators_2.11-1.0.2-sources.jar" kind="lib" path="/home/gunther/.ivy2/cache/org.scala-lang.modules/scala-parser-combinators_2.11/bundles/scala-parser-combinators_2.11-1.0.2.jar"/>
   <classpathentry sourcepath="/home/gunther/.ivy2/cache/org.anormcypher/anormcypher_2.11/srcs/anormcypher_2.11-0.6.0-sources.jar" kind="lib" path="/home/gunther/.ivy2/cache/org.anormcypher/anormcypher_2.11/jars/anormcypher_2.11-0.6.0.jar"/>
@@ -10,7 +12,6 @@
   <classpathentry sourcepath="/home/gunther/.ivy2/cache/org.scala-lang.modules/scala-xml_2.11/srcs/scala-xml_2.11-1.0.1-sources.jar" kind="lib" path="/home/gunther/.ivy2/cache/org.scala-lang.modules/scala-xml_2.11/bundles/scala-xml_2.11-1.0.1.jar"/>
   <classpathentry sourcepath="/home/gunther/.ivy2/cache/com.ning/async-http-client/srcs/async-http-client-1.8.8-sources.jar" kind="lib" path="/home/gunther/.ivy2/cache/com.ning/async-http-client/jars/async-http-client-1.8.8.jar"/>
   <classpathentry sourcepath="/home/gunther/.ivy2/cache/io.netty/netty/srcs/netty-3.9.0.Final-sources.jar" kind="lib" path="/home/gunther/.ivy2/cache/io.netty/netty/bundles/netty-3.9.0.Final.jar"/>
-  <classpathentry sourcepath="/home/gunther/.ivy2/cache/org.slf4j/slf4j-api/srcs/slf4j-api-1.7.5-sources.jar" kind="lib" path="/home/gunther/.ivy2/cache/org.slf4j/slf4j-api/jars/slf4j-api-1.7.5.jar"/>
   <classpathentry sourcepath="/home/gunther/.ivy2/cache/com.typesafe.play/play-json_2.11/srcs/play-json_2.11-2.3.5-sources.jar" kind="lib" path="/home/gunther/.ivy2/cache/com.typesafe.play/play-json_2.11/jars/play-json_2.11-2.3.5.jar"/>
   <classpathentry sourcepath="/home/gunther/.ivy2/cache/com.typesafe.play/play-iteratees_2.11/srcs/play-iteratees_2.11-2.3.5-sources.jar" kind="lib" path="/home/gunther/.ivy2/cache/com.typesafe.play/play-iteratees_2.11/jars/play-iteratees_2.11-2.3.5.jar"/>
   <classpathentry sourcepath="/home/gunther/.ivy2/cache/org.scala-stm/scala-stm_2.11/srcs/scala-stm_2.11-0.7-sources.jar" kind="lib" path="/home/gunther/.ivy2/cache/org.scala-stm/scala-stm_2.11/jars/scala-stm_2.11-0.7.jar"/>
@@ -25,6 +26,8 @@
   <classpathentry sourcepath="/home/gunther/.ivy2/cache/org.scala-lang/scala-reflect/srcs/scala-reflect-2.11.1-sources.jar" kind="lib" path="/home/gunther/.ivy2/cache/org.scala-lang/scala-reflect/jars/scala-reflect-2.11.1.jar"/>
   <classpathentry sourcepath="/home/gunther/.ivy2/cache/org.apache.commons/commons-lang3/srcs/commons-lang3-3.3.2-sources.jar" kind="lib" path="/home/gunther/.ivy2/cache/org.apache.commons/commons-lang3/jars/commons-lang3-3.3.2.jar"/>
   <classpathentry sourcepath="/home/gunther/.ivy2/cache/com.github.scopt/scopt_2.11/srcs/scopt_2.11-3.3.0-sources.jar" kind="lib" path="/home/gunther/.ivy2/cache/com.github.scopt/scopt_2.11/jars/scopt_2.11-3.3.0.jar"/>
+  <classpathentry sourcepath="/home/gunther/.ivy2/cache/com.typesafe.scala-logging/scala-logging_2.11/srcs/scala-logging_2.11-3.1.0-sources.jar" kind="lib" path="/home/gunther/.ivy2/cache/com.typesafe.scala-logging/scala-logging_2.11/jars/scala-logging_2.11-3.1.0.jar"/>
+  <classpathentry sourcepath="/home/gunther/.ivy2/cache/org.slf4j/slf4j-api/srcs/slf4j-api-1.7.7-sources.jar" kind="lib" path="/home/gunther/.ivy2/cache/org.slf4j/slf4j-api/jars/slf4j-api-1.7.7.jar"/>
   <classpathentry sourcepath="/home/gunther/.ivy2/cache/org.scalatest/scalatest_2.11/srcs/scalatest_2.11-2.2.4-sources.jar" kind="lib" path="/home/gunther/.ivy2/cache/org.scalatest/scalatest_2.11/bundles/scalatest_2.11-2.2.4.jar"/>
   <classpathentry sourcepath="/home/gunther/.ivy2/cache/org.scala-lang/scala-reflect/srcs/scala-reflect-2.11.2-sources.jar" kind="lib" path="/home/gunther/.ivy2/cache/org.scala-lang/scala-reflect/jars/scala-reflect-2.11.2.jar"/>
   <classpathentry sourcepath="/home/gunther/.ivy2/cache/org.scala-lang.modules/scala-xml_2.11/srcs/scala-xml_2.11-1.0.2-sources.jar" kind="lib" path="/home/gunther/.ivy2/cache/org.scala-lang.modules/scala-xml_2.11/bundles/scala-xml_2.11-1.0.2.jar"/>

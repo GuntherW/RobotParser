@@ -10,28 +10,32 @@ import de.codecentric.wittig.robotparser.Zuweisung
 import de.codecentric.wittig.robotparser.Zeile
 import org.anormcypher.Cypher
 import org.anormcypher.Neo4jREST
+import com.typesafe.scalalogging.LazyLogging
+import com.typesafe.scalalogging.Logger
+import org.slf4j._
 
 /**
  * @author Gunther Wittig
  */
-object NeoService extends App {
+case class NeoService(path: String) extends LazyLogging {
 
   import org.anormcypher._
 
   // Setup the Rest Client
   implicit val connection = Neo4jREST()
   //
-  val path = "/home/gunther/play/robot/"
+  //  val path = "/home/gunther/play/robot/"
   val file = new File(path)
   val seq = FileUtil.recursiveListFiles(file).map(fn => (fn.getPath, RobotParser(fn))).map(s => (s._1, s._2.get))
   val seqInsert = seq.flatMap(g => (g._2.keywords.map { x => x.fileName = Some(g._1.replace(path, "")); x.baum = Some(g._2); x }))
 
-  deleteAll
-  insertKeywords
-  insertRelations
+  //  deleteAll
+  //  insertKeywords
+  //  insertRelations
 
   def insertRelations = {
     println("Anzahl Wörter: " + seqInsert.size)
+    logger.debug("Anzahl Wörter: " + seqInsert.size)
 
     val wortZuZeilen = for {
       sw <- seqInsert
@@ -69,18 +73,17 @@ object NeoService extends App {
     		""")
     }
 
-    cypher.map(x => x.query + " - " + x.params).toList.foreach { println }
-    println("Anzahl Relationen: " + cypher.size)
+    //    cypher.map(x => x.query + " - " + x.params).toList.foreach { println }
     val b = cypher.map(_.execute()).toList
-    b.foreach(println)
-    println("fertig")
+    println("Relationen importiert: " + cypher.size)
   }
 
   def insertKeywords = {
 
     val end = seqInsert.sortBy(_.wort).zipWithIndex.map(cypher)
     val readableString = end.toList.mkString("\n") + ";"
-    println("insert: " + Cypher(readableString).execute())
+    Cypher(readableString).execute()
+    println("Schlüsselwörter aufgenommen: " + end.size)
   }
 
   def deleteAll = {
@@ -89,8 +92,23 @@ object NeoService extends App {
               | DELETE n,r;
               | """.stripMargin
 
-    val deleted = Cypher(s).execute
-    println(s"deleted: $deleted")
+    val deleted = Cypher(s).execute()
+    println(s"all entities deleted: $deleted")
+  }
+
+  def getRelationen(name: String) = {
+    import org.anormcypher.CypherParser._
+    val s = s"""START n = node(*)
+      MATCH p =  n-[:RUFTAUF]->m
+      where m.name = '$name'
+      RETURN n.name, n.filename,m.name, m.filename
+      """
+    val aa = Cypher(s)
+    logger.debug(aa.query)
+    Cypher(s).as(str("n.name") ~ str("n.filename") ~ str("m.name") ~ str("m.filename") map (flatten) *)
+    //    aa.apply().map { row =>
+    //      (row[String]("n.name"), row[String]("m.name"))
+    //    }.toList
   }
 
   def cypher(tuple: (Schluesselwort, Int)) = {
@@ -116,12 +134,22 @@ object NeoService extends App {
    */
   def test = {
 
-    val allCountries = Cypher("start n=node(*) where n.type = 'Country' return n.population as population, n.code as code, n.name as name")
-
-    // Transform the resulting Stream[CypherRow] to a List[(String,String)]
-    val countries = allCountries.apply().map(row =>
-      (row[Int]("population"), row[String]("code"), row[String]("name"))
-    ).toList
-    countries.foreach(println)
+    val s = s"""START n = node(*)
+      MATCH p =  n-[:RUFTAUF]->m
+      where n.name = 'Gefahr setzen'
+      RETURN n.name,m.name
+      """
+    val all = Cypher(s)
+    val l = all.apply().map { row =>
+      (row[String]("n.name"), row[String]("m.name"))
+    }.toList
+    //    val allCountries = Cypher("start n=node(*) where n.type = 'Country' return n.population as population, n.code as code, n.name as name")
+    //
+    //    // Transform the resulting Stream[CypherRow] to a List[(String,String)]
+    //    val countries = allCountries.apply().map(row =>
+    //      (row[Int]("population"), row[String]("code"), row[String]("name"))
+    //    ).toList
+    //    countries.foreach(println)
+    l
   }
 }

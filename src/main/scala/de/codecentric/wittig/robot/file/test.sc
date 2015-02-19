@@ -1,24 +1,9 @@
 package de.codecentric.wittig.robot.file
 import de.codecentric.wittig.robot.file._
 object test {
-
-val r = "(er)(w)".r.unanchored                    //> r  : scala.util.matching.UnanchoredRegex = (er)(w)
-val s = "werw"                                    //> s  : String = werw
-r.findFirstIn(s)                                  //> res0: Option[String] = Some(erw)
-
-s match {
-	case r(s,t) => s + "- " +t
-	case _ => "nix"
-}                                                 //> res1: String = er- w
-
-val p = "/home/gunther/"                          //> p  : String = /home/gunther/
-val path = "/home/gunther/test.robot"             //> path  : String = /home/gunther/test.robot
-path.replace(p, "")                               //> res2: String = test.robot
-
-val regex = """(.*)\.(.*)""".r                    //> regex  : scala.util.matching.Regex = (.*)\.(.*)
-"wer--wer" match {
-	case regex(a,b) => a+ "-- "+b
-	case a => "ll"+a
-}                                                 //> res3: String = llwer--wer
+val s1 = "hallo"                                  //> s1  : String = hallo
+val s2 = "welt"                                   //> s2  : String = welt
+val s3 = "gunther"                                //> s3  : String = gunther
+val s = f"$s1%s$s2%20s$s3"                        //> s  : String = hallo                weltgunther
 
 }
