@@ -1,9 +1,14 @@
 package de.codecentric.wittig.robot.file
 import de.codecentric.wittig.robot.file._
+import java.io._
 object test {
-val s1 = "hallo"                                  //> s1  : String = hallo
-val s2 = "welt"                                   //> s2  : String = welt
-val s3 = "gunther"                                //> s3  : String = gunther
-val s = f"$s1%s$s2%20s$s3"                        //> s  : String = hallo                weltgunther
+	val l = Some(List(1,2,3,4))               //> l  : Some[List[Int]] = Some(List(1, 2, 3, 4))
+	val n = None                              //> n  : None.type = None
+	n.getOrElse(List.empty[Int]).map(_+2)     //> res0: List[Int] = List()
 
+	val path = "../robot/"                    //> path  : String = ../robot/
+	val f = new File(path)                    //> f  : java.io.File = ../robot
+	f.getCanonicalFile                        //> res1: java.io.File = /home/robot
+	f.getPath                                 //> res2: String = ../robot
+	f.getAbsolutePath                         //> res3: String = /home/gunther/../robot
 }

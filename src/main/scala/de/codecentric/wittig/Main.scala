@@ -21,7 +21,9 @@ object Main extends App with LazyLogging {
       if (config.init) {
         neoService.deleteAll
         neoService.insertKeywords
-        neoService.insertRelations
+        neoService.insertTestKeywords
+        neoService.insertRelations("Schluesselwort")
+        neoService.insertRelations("Testcase")
       }
 
       println("Bitte geben Sie den Namen des Schlüsselwortes ein:")
